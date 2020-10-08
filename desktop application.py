@@ -2,17 +2,18 @@ from tkinter import *
 import backend
 
 def get_selected_row(event):
-    global selected_tuple
-    index=list1.curselection()[0]
-    selected_tuple=list1.get(index)
-    e1.delete(0,END)
-    e1.insert(END,selected_tuple[1])
-    e2.delete(0,END)
-    e2.insert(END,selected_tuple[2])
-    e3.delete(0,END)
-    e3.insert(END,selected_tuple[3])
-    e4.delete(0,END)
-    e4.insert(END,selected_tuple[4])
+     global selected_tuple
+     index=list1.curselection()[0]
+     selected_tuple=list1.get(index)
+     e1.delete(0,END)
+     e1.insert(END,selected_tuple[0])
+     e2.delete(0,END)
+     e2.insert(END,selected_tuple[1])
+     e3.delete(0,END)
+     e3.insert(END,selected_tuple[2])
+     e4.delete(0,END)
+     e4.insert(END,selected_tuple[3])
+    
 
 def view_command():
     list1.delete(0,END)
@@ -28,9 +29,11 @@ def add_command():
     backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
     list1.delete(0,END)
     list1.insert(END,(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()))
+    view_command()
 
 def delete_command():
     backend.delete(selected_tuple[0])
+    view_command()
 
 def update_command():
     backend.update(selected_tuple[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
